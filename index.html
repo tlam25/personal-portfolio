@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Thanh-Lam T. Nguyen — Dream Town Portfolio</title>
+<meta name="description" content="An interactive 3D portfolio town of Thanh-Lam T. Nguyen — NLP researcher, software engineer, and PhD applicant." />
+<meta property="og:title" content="Thanh-Lam T. Nguyen — Dream Town Portfolio" />
+<meta property="og:description" content="Wander a floating pastel town and unroll the scrolls of my research, projects and awards." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="assets/preview.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏡</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+
+  <!-- ====== 3D stage ====== -->
+  <div id="stage">
+    <canvas id="scene"></canvas>
+    <div id="labels" aria-hidden="true"></div>
+  </div>
+
+  <!-- ====== Intro / loading veil ====== -->
+  <div id="intro">
+    <div class="intro-card">
+      <div class="intro-sparkles" aria-hidden="true"></div>
+      <p class="intro-kicker">Welcome to</p>
+      <h1 class="intro-title">Lam&rsquo;s Dream Town</h1>
+      <p class="intro-sub">A floating little world where every house keeps a chapter of my story.<br />Click a building to unroll its scroll.</p>
+      <button id="enter-btn" type="button">
+        <span class="btn-glow"></span>
+        <span class="btn-label">Enter the town</span>
+      </button>
+      <p class="intro-foot">Drag to orbit &nbsp;·&nbsp; scroll to zoom &nbsp;·&nbsp; click a house</p>
+    </div>
+  </div>
+
+  <!-- ====== Header ====== -->
+  <header id="topbar" class="ui-hidden">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <div>
+        <strong>Thanh-Lam T. Nguyen</strong>
+        <small>NLP Research &nbsp;·&nbsp; VNU-UET &nbsp;·&nbsp; Viet Nam</small>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <a class="pill" id="cv-link" href="assets/CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="pill" href="https://github.com/tlam25" target="_blank" rel="noopener">GitHub</a>
+      <button class="pill pill-ghost" id="tour-btn" type="button">Auto tour</button>
+    </div>
+  </header>
+
+  <!-- ====== Bottom dock (fast travel) ====== -->
+  <nav id="dock" class="ui-hidden" aria-label="Places in the town"></nav>
+
+  <!-- ====== Treasure scroll ====== -->
+  <div id="scroll-overlay" aria-hidden="true">
+    <div class="scroll-backdrop"></div>
+    <div class="scroll-stage" role="dialog" aria-modal="true" aria-labelledby="scroll-title">
+      <div class="rod rod-top"><span class="knob left"></span><span class="knob right"></span></div>
+      <div class="paper" id="paper">
+        <div class="paper-texture" aria-hidden="true"></div>
+        <div class="paper-inner" id="paper-inner">
+          <div class="paper-head">
+            <span class="paper-emoji" id="scroll-emoji">✦</span>
+            <div>
+              <h2 id="scroll-title">Title</h2>
+              <p id="scroll-sub">Subtitle</p>
+            </div>
+          </div>
+          <div id="scroll-body"></div>
+        </div>
+      </div>
+      <div class="rod rod-bottom"><span class="knob left"></span><span class="knob right"></span></div>
+      <button id="scroll-close" type="button" aria-label="Close scroll">✕</button>
+    </div>
+  </div>
+
+  <div id="tooltip" aria-hidden="true"></div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
